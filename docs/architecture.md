@@ -6,28 +6,7 @@ This solution implements a modern **ELT (Extract, Load, Transform)** pattern enh
 
 ### Data Flow Diagram
 
-```mermaid
-graph TD
-    subgraph Data_Generation_Zone [Secure Local Environment]
-        A[Data Generator<br/>(Python/Faker)] -->|JSON/CSV| B(Raw Data Lake<br/>'data/raw')
-    end
-
-    subgraph Intelligence_Layer [Auditing Engine]
-        B -->|Pandas Ingestion| C{Anomaly Detector<br/>(Scikit-Learn)}
-        C -->|Isolation Forest Logic| D(Audited Dataset<br/>'data/processed')
-    end
-
-    subgraph Presentation_Layer [Business Intelligence]
-        D -->|Import| E[Power BI Data Model<br/>(Star Schema)]
-        E -->|DAX Measures| F[Executive Dashboard]
-    end
-
-    subgraph Orchestration
-        G[run_pipeline.sh] --> A
-        G --> C
-    end
-
-```
+![Data Flow Diagram](assets/Image_4.png)
 
 ---
 
